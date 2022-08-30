@@ -39,7 +39,7 @@ do {
         break;
         case 3:
             alert(`Sollicitar Prestamo`)
-            cotizador();
+            aprobarPrestamo();
         break;
         default:
             alert("Ingrese una opcion valida.");
@@ -50,29 +50,23 @@ do {
 
 
 
-function cotizador(){
-    let monto = Number(prompt("Ingresar monto"));
-    let cuotas = Number(prompt("Elija las cantidad de cuotas"));
-   
-
-
-    
-    if (monto > 5000) {
-        alert("Puedes Solicitar hasta $5000");
-        
-    } else {
-        (cuotas <= 24) 
-        
-        alert("Son demasiadas  cuotas");
-        cuotas = Number(prompt("Elija las cantidad de cuotas. Tienes hasta 24 cuotas"));   
+function aprobarPrestamo(){
+    // Aprobar monto ingresado.
+    let montoIngresado = Number(prompt("Ingresar monto"));
+    while((montoIngresado > 5000 || montoIngresado <= 0)){
+        alert("El monto ingresado no fue aprobado. Puede solicitar un maximo de 5000.");
+        montoIngresado = Number(prompt("Ingresar monto"))
     }
-    for(let i=0; i <= 10; i++ ){
-        const result = monto / cuotas;
-        alert("Su credito fue aprobado");
-        alert("Te quedan $" + monto + " en " + cuotas + " cuotas de " + result);
-        break;
+
+    // Aprobar cuotas ingresadas.
+    let cuotasSolicitadas = Number(prompt("Elija las cantidad de cuotas"));
+    while((cuotasSolicitadas > 24 || cuotasSolicitadas <= 0)){
+        alert("La cantidad de cuotas es incorrecta. Puede pedir hasta 24 cuotas.");
+        cuotasSolicitadas = Number(prompt("Elija las cantidad de cuotas"));
     }
-    
+
+    const result = montoIngresado / cuotasSolicitadas;
+    alert("Su credito fue aprobado");
+    alert("Te quedan $" + montoIngresado + " en " + cuotasSolicitadas + " cuotas de $" + result);
 }
-
 
