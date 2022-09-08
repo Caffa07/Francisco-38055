@@ -111,6 +111,8 @@ function aprobarPrestamo(){
             case 1:
                 alert(`Genial vamos a crearle un Usuario `);
                 nuevoUsuario();
+                const usuario4 = new nuevoUsuario(Number(prompt("Ingresa tu dni")), prompt("Ingresa tu nombre"), prompt("ingresa tu apellido"));
+                usuarios.push(usuario4);
             break;
             case 2:
                 alert(`No Podra ingresar a CCF`);
@@ -130,8 +132,8 @@ function nuevoUsuario(dni, name, lastname) {
     this.nombre = name;
     this.apellido = lastname;
 }
-const usuario4 = new nuevoUsuario(Number(prompt("Ingresa tu dni")), prompt("Ingresa tu nombre"), prompt("ingresa tu apellido"));
-usuarios.push(usuario4);
+console.log(usuarios);
+
 
 
 //Funcion para recorer array
