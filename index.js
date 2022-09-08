@@ -70,7 +70,7 @@ if (recorido()) {
     );
         alert("usuario Creado")
       usuarios.push(usuario4);
-      console.log(usuarios);
+      console.log(usuario4);
       do {
         menuPrincipal();
       } while (inputOP !== 0);
