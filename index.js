@@ -7,6 +7,7 @@ while (input === 0) {
   input = Number(prompt("Ingresa tu dni"));
 }
 
+
 let birthYear = Number(prompt("Ingresar Año de nacimiento"));
 let actualYear = 2022;
 let result = actualYear - birthYear;
@@ -18,29 +19,41 @@ while (birthYear > 2004 || birthYear < 1950) {
 
 // Creacion de array de Objetos para usuarios
 const usuarios = [
-  (usiario1 = {
+  ({
     dni: 37081504,
     nombre: "francisoco",
     apellido: "caffa",
   }),
-  (usuario2 = {
+  ({
     dni: 35714840,
     nombre: "raul",
     apellido: "messi",
   }),
-  (usiario3 = {
+  ({
     dni: 12255009,
     nombre: "laura",
     apellido: "stark",
   }),
 ];
+const saludo = usuarios.filter(item => {
+  if (item.dni === input){
+    alert("Bienvenido!")
+    return true;
+  }else{
+    return false;
+  }
+});
+console.log(saludo);
+
 
 // inicializo las variables a mostrar.
 let inputOP;
 let saldo = 0;
 
+
 // Si recorido me da true sigo con los menu de opcionnes
 if (recorido()) {
+  
   // Muestro el menu
   // Mientras la opcion ingresada no sea cero, muestro resultado
   // y repito el menu.
@@ -168,3 +181,4 @@ function aprobarPrestamo() {
       result
   );
 }
+
