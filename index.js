@@ -18,7 +18,7 @@ while (birthYear > 2004 || birthYear < 1950) {
 }
 
 // Creacion de array de Objetos para usuarios
-const usuarios = [
+let usuarios = [
   ({
     dni: 37081504,
     nombre: "francisoco",
@@ -35,17 +35,10 @@ const usuarios = [
     apellido: "stark",
   }),
 ];
-const saludo = usuarios.filter(item => {
-  if (item.dni === input){
-    alert("Bienvenido!")
-    return true;
-  }else{
-    return false;
-  }
-});
-console.log(saludo);
+//Le Agrego un filter para que si el Usuario Coincide lo vuelva a saludar
+buscarCliente(input);
 
-
+getUsuario();
 // inicializo las variables a mostrar.
 let inputOP;
 let saldo = 0;
@@ -182,3 +175,10 @@ function aprobarPrestamo() {
   );
 }
 
+function buscarCliente(dni) {
+  usuarios = usuarios.filter(usuario => usuario.dni === dni);
+  console.log(usuarios);
+}
+function getUsuario() {
+  usuarios.forEach((usuarios) => alert("Hola! " + usuarios.nombre));
+}
