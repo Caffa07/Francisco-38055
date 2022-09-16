@@ -1,0 +1,21 @@
+main{
+    height: 98vh;
+    display: block;
+    align-items: center;
+    background-color: hwb(42 2% 69% / 0.616);
+}
+.ini{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px;  
+}
+h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:cornflowerblue;
+}
+.footer{
+    background-color:cornflowerblue;
+}
