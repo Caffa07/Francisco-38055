@@ -70,87 +70,12 @@ function mostrarContacto(presupuesto){
       <input class="boton-volver" type="submit" value="Buscar">
   </div>    
 </form>`; 
-  // <section class="mainContainer container-fluid">
-  // <div class="row">
-  //         <div class="selectedDia col-sm-12 col-md-4 col-xl-4">
-  //             <select id="userDia" class="form-select" aria-label="Default select example">
-  //                 <option selected>Día</option>
-  //                 <option value="1">1</option>
-  //                 <option value="2">2</option>
-  //                 <option value="3">3</option>
-  //                 <option value="4">4</option>
-  //                 <option value="5">5</option>
-  //                 <option value="6">6</option>
-  //                 <option value="7">7</option>
-  //                 <option value="8">8</option>
-  //                 <option value="9">9</option>
-  //                 <option value="10">10</option>
-  //                 <option value="11">11</option>
-  //                 <option value="12">12</option>
-  //                 <option value="13">13</option>
-  //                 <option value="14">14</option>
-  //                 <option value="15">15</option>
-  //                 <option value="16">16</option>
-  //                 <option value="17">17</option>
-  //                 <option value="18">18</option>
-  //                 <option value="19">19</option>
-  //                 <option value="20">20</option>
-  //                 <option value="21">21</option>
-  //                 <option value="22">22</option>
-  //                 <option value="23">23</option>
-  //                 <option value="24">24</option>
-  //                 <option value="25">25</option>
-  //                 <option value="26">26</option>
-  //                 <option value="27">27</option>
-  //                 <option value="28">28</option>
-  //                 <option value="29">29</option>
-  //                 <option value="30">30</option>
-  //                 <option value="31">31</option>
-  //             </select>
-  //         </div>
-  //         <div class="selectedMes col-sm-12 col-md-4 col-xl-4">    
-  //             <select id="userMes" class="form-select" aria-label="Default select example">
-  //                 <option selected>Mes</option>
-  //                 <option value="Enero">Enero</option>
-  //                 <option value="Febrero">Febrero</option>
-  //                 <option value="Marzo">Marzo</option>
-  //                 <option value="Abril">Abril</option>
-  //                 <option value="Mayo">Mayo</option>
-  //                 <option value="Junio">Junio</option>
-  //                 <option value="Julio">Julio</option>
-  //                 <option value="Agosto">Agosto</option>
-  //                 <option value="Septiembre">Septiembre</option>
-  //                 <option value="Octubre">Octubre</option>
-  //                 <option value="Noviembre">Noviembre</option>
-  //                 <option value="Diciembre">Diciembre</option>
-  //             </select>
-  //         </div>
-  //         <div class="selectedAño col-sm-12 col-md-4 col-xl-4">    
-  //             <select id="userAño" class="form-select" aria-label="Default select example">
-  //                 <option selected>Año</option>
-  //                 <option value="2022">2022</option>
-  //                 <option value="2023">2023</option>
-  //                 <option value="2024">2024</option>
-  //             </select>
-  //         </div> 
-  
-      {/* </div>
-  </section> */}
+ 
 const botonVerPresupuesto = crearBotonVerPresupuesto(presupuesto);
 
 }
 function completarFormulario(e){
 e.preventDefault();
-// const selectedDay = document.getElementById("userDia").value;
-// const selectedMonth = document.getElementById("userMes").value;
-// const selectedYear = document.getElementById("userAño").value;
-//   fechaElejida = {
-//   selectedDay: selectedDay,
-//   selectedMonth: selectedMonth,
-//   selectedYear: selectedYear,
-//   }
-  // localStorage.setItem(fechaElejida, JSON.stringify(fechaElejida));
-  
 fechaElejida = document.getElementById("userDia").value;
   const listado = document.getElementById("listado");
   const listadoFechas = JSON.parse(localStorage.getItem(fechaElejida));
@@ -169,7 +94,7 @@ function mostrarListado(listadoFechas){
   listadoFechas.forEach(lista => {
       let li = document.createElement("li");
       li.innerHTML=`
-      <h2>${lista.lounge} - ${lista.invited} - ${lista.name} - ${lista.lastname} -  ${lista.num} -
+      <h2>${lista.lounge} - ${lista.invited} - ${lista.name} - ${lista.lastname} -  ${lista.num} 
       </h2>
       `
       listado.appendChild(li);
@@ -182,23 +107,23 @@ function formulario(){
   <div id="containerform">
         <h1>Dejanos Tus Datos y nos pondremos en contacto</h1>
     <div class="row">
-        <div id="salon" class="selectedSalon col-sm-12 col-md-6 col-xl-6">
-            <input class="form-control" type="text" placeholder="Salón" aria-label="default input example">
+        <div class="selectedSalon col-sm-12 col-md-6 col-xl-6">
+            <input id="salon" class="form-control" type="text" placeholder="Salón" aria-label="default input example">
     </div>
-        <div id="invitados" class="selectedInvitados col-sm-12 col-md-6 col-xl-6">
-            <input class="form-control" type="text" placeholder="Cantidad aproximada de invitados" aria-label="default input example">
+        <div  class="selectedInvitados col-sm-12 col-md-6 col-xl-6">
+            <input id="invitados" class="form-control" type="text" placeholder="Cantidad aproximada de invitados" aria-label="default input example">
         </div>
     </div>
     <br>
     <div class="row">
-        <div id="name" class="selectedNombre col-sm-12 col-md-4 col-xl-4">
-            <input class="form-control" type="text" placeholder="Nombre" aria-label="default input example">
+        <div class="selectedNombre col-sm-12 col-md-4 col-xl-4">
+            <input id="name" class="form-control" type="text" placeholder="Nombre" aria-label="default input example">
         </div>
-        <div id="lastname" class="selectedApellido col-sm-12 col-md-4 col-xl-4">
-            <input class="form-control" type="text" placeholder="Apellido" aria-label="default input example">
+        <div  class="selectedApellido col-sm-12 col-md-4 col-xl-4">
+            <input id="lastname" class="form-control" type="text" placeholder="Apellido" aria-label="default input example">
         </div>
-        <div id="cell" class="selectedTelefono col-sm-12 col-md-4 col-xl-4">
-            <input class="form-control" type="text" placeholder="Teléfono" aria-label="default input example">
+        <div class="selectedTelefono col-sm-12 col-md-4 col-xl-4">
+            <input id="cell" class="form-control" type="text" placeholder="Teléfono" aria-label="default input example">
         </div>
     </div>
     <br>
@@ -219,12 +144,9 @@ function agregarFecha(e){
   const invited = document.getElementById("invitados").value;
   const name = document.getElementById("name").value;
   const lastname = document.getElementById("lastname").value;
-  // const day = document.getElementById("userDia").value;
-  // const year = document.getElementById("userAño").value;
-  // const month = document.getElementById("userMes").value;
   const num = document.getElementById("cell").value
 
-  const listado = new Listado(lounge, invited, name, lastname);
+  const listado = new Listado(lounge, invited, name, lastname, num);
 
   const localStorageFechas = JSON.parse(localStorage.getItem(fechaElejida));
   if(localStorageFechas == null){
