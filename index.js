@@ -1,203 +1,258 @@
-///////////////////////////////////////////////////////////////////////////////////////////////////FUNCIONES/////////////////////////////////////////////////////////////////////////////////////////
-// Funcion de nuevo usuario
-function nuevoUsuario(dni, name, lastname) {
-  this.dni = dni;
-  this.nombre = name;
-  this.apellido = lastname;
-}
+function mostrarPresupuestos(presupuesto){
+  const contenedorPresupuestos = document.getElementById("presupuestosContenedor");
+  contenedorPresupuestos.innerHTML="";
 
-//Funcion para recorer array
-function recorido() {
-  let bandera;
-  for (let i = 0; i < usuarios.length; i++) {
-    if (usuarios[i].dni === input) {
-      //console.log("Entre");
-      bandera = true;
-      break;
-    } else {
-      bandera = false;
-    }
+  contenedorPresupuestos.innerHTML = `
+  <h2>${presupuesto.titulo}</h2>
+  <img src= "${presupuesto.imagen}">
+  <br>
+  <p><img src= "${presupuesto.descripcion}"></p>`; 
+}
+function botonAtras(){
+   const botonAtras = document.createElement ("button");
+   botonAtras.classList.add("boton-volver");
+   botonAtras.innerText = "Atras";
+   botonAtras.addEventListener("click", () => {
+      mPresupuestos(presupuestos);
+   })
+   document.getElementById("presupuestosContenedor").prepend(botonAtras);
+}
+function crearBotonVerPresupuesto(presupuesto){
+   const button = document.createElement("button");
+   button.classList.add("boton-contacto");
+   button.innerText = "Ver Presupuesto";
+   button.addEventListener("click", () => {
+       mostrarPresupuestos(presupuesto);
+       botonAtras();
+       botonContacto();
+   })
+   return button;
+}
+function mPresupuestos(presupuestos) {
+   const contenedorPresupuestos =  document.getElementById("presupuestosContenedor");
+   contenedorPresupuestos.innerHTML = ""
+
+   presupuestos.forEach(presupuesto => {
+        const divPresupuesto = document.createElement("div");
+        divPresupuesto.classList.add("presup");
+       divPresupuesto.innerHTML = `
+       <h1>${presupuesto.titulo}</h1>
+       <img src= "${presupuesto.imagen}">
+       <br>
+       `
+       const botonVerPresupuesto = crearBotonVerPresupuesto(presupuesto);
+       divPresupuesto.append(botonVerPresupuesto);
+       contenedorPresupuestos.append(divPresupuesto);
+
+    });
+}
+function botonContacto(){
+  const botonContacto = document.createElement ("button");
+  botonContacto.classList.add("boton-volver");
+  botonContacto.innerText = "Contacto";
+  botonContacto.addEventListener("click", () => {
+    mostrarContacto();
+    botonAtras();
+  })
+  document.getElementById("presupuestosContenedor").prepend(botonContacto);
+}
+function mostrarContacto(presupuesto){
+  const contenedorContacto = document.getElementById("presupuestosContenedor");
+  contenedorContacto.innerHTML="";
+
+  contenedorContacto.innerHTML = ` 
+<form id="mainContacto">
+  <h2 class="h2Contacto">Hacé tu consulta</h2>
+  <section class="mainContainer container-fluid">
+      <div class="row">
+          <div class="selectedDia col-sm-12 col-md-4 col-xl-4">
+              <select id="userDia" class="form-select" aria-label="Default select example">
+                  <option selected>Día</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+              </select>
+          </div>
+          <div class="selectedMes col-sm-12 col-md-4 col-xl-4">    
+              <select id="userMes" class="form-select" aria-label="Default select example">
+                  <option selected>Mes</option>
+                  <option value="Enero">Enero</option>
+                  <option value="Febrero">Febrero</option>
+                  <option value="Marzo">Marzo</option>
+                  <option value="Abril">Abril</option>
+                  <option value="Mayo">Mayo</option>
+                  <option value="Junio">Junio</option>
+                  <option value="Julio">Julio</option>
+                  <option value="Agosto">Agosto</option>
+                  <option value="Septiembre">Septiembre</option>
+                  <option value="Octubre">Octubre</option>
+                  <option value="Noviembre">Noviembre</option>
+                  <option value="Diciembre">Diciembre</option>
+              </select>
+          </div>
+          <div class="selectedAño col-sm-12 col-md-4 col-xl-4">    
+              <select id="userAño" class="form-select" aria-label="Default select example">
+                  <option selected>Año</option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+              </select>
+          </div> 
+          <div class="d-grid gap-2 col-6 mx-auto">
+                   <input class="boton-volver" type="submit" value="Buscar">
+              </div>     
+      </div>
+  </section>
+</form>`; 
+const botonVerPresupuesto = crearBotonVerPresupuesto(presupuesto);
+
+}
+function completarFormulario(e){
+e.preventDefault();
+const selectedDay = document.getElementById("userDia").value;
+const selectedMonth = document.getElementById("userMes").value;
+const selectedYear = document.getElementById("userAño").value;
+let fechaElejida = {
+  selectedDay: selectedDay,
+  selectedMonth: selectedMonth,
+  selectedYear: selectedYear,
   }
-  return bandera;
-}
-    //Funcion menu
-    // Muestro el menu
-    // Mientras la opcion ingresada no sea cero, muestro resultado
-    // y repito el menu.
-function menuPrincipal() {
-  alert(`
-    Ingrese una Opcion:
-        1. Consultar saldo
-        2. Retirar dinero
-        3. Sollicitar Prestamo
-        0. Salir`);
-  inputOP = Number(prompt("Ingresa una Opcion"));
-  switch (inputOP) {
-    case 0:
-      alert("Gracias por su Visita");
-      break;
-    case 1:
-      alert(`Tu saldo es de: ${saldo}`);
-      break;
-    case 2:
-      alert(`No puede retirar dinero ya que su saldo es: ${saldo}`);
-      break;
-    case 3:
-      alert(`Sollicitar Prestamo`);
-      aprobarPrestamo();
-      break;
-    default:
-      alert("Ingrese una opcion valida.");
-      break;
-  }
-}
-
-//funcion para calcular prestamo
-function aprobarPrestamo() {
-  // Aprobar monto ingresado.
-  let montoIngresado = Number(prompt("Ingresar monto"));
-  while (montoIngresado > 5000 || montoIngresado <= 0) {
-    alert(
-      "El monto ingresado no fue aprobado. Puede solicitar un maximo de 5000."
-    );
-    montoIngresado = Number(prompt("Ingresar monto"));
-  }
-
-  // Aprobar cuotas ingresadas.
-  let cuotasSolicitadas = Number(prompt("Elija las cantidad de cuotas"));
-  while (cuotasSolicitadas > 24 || cuotasSolicitadas <= 0) {
-    alert(
-      "La cantidad de cuotas es incorrecta. Puede pedir hasta 24 cuotas."
-    );
-    cuotasSolicitadas = Number(prompt("Elija las cantidad de cuotas"));
-  }
-
-  const result = montoIngresado / cuotasSolicitadas;
-  alert("Su credito fue aprobado");
-  alert(
-    "Te quedan $" +
-      montoIngresado +
-      " en " +
-      cuotasSolicitadas +
-      " cuotas de $" +
-      result
-  );
-}
-
-function buscarCliente(dni) {
-  usuarios = usuarios.filter(usuario => usuario.dni === dni);
-  console.log(usuarios);
-}
-function getUsuario() {
-  const titulo = document.getElementById("titulo");
-  usuarios.forEach((usuarios) => titulo.innerText = "Hola " + usuarios.nombre);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////FIN FUNCIONES////////////////////////////////////////////////////////////////////////////////////////
-let pepe = document.getElementById("btn");
-pepe.addEventListener("click", () => {
-  getUsuario();
+  // localStorage.setItem(fechaElejida.selectedMonth, JSON.stringify(fechaElejida));
   
-}) 
-
-let input = Number(prompt("Ingresa tu dni"));
-
-
-
-while (input === 0) {
-  alert("dni no valido");
-  input = Number(prompt("Ingresa tu dni"));
+  
+  const listado = document.getElementById("listado");
+  const listadoFechas = JSON.parse(localStorage.getItem(fechaElejida));
+  if(listadoFechas == null){
+      listado.innerHTML = "<h1>No Tenemos Consultas Para Esa Fecha</h1>"
+  }else {
+      mostrarListado(listas);
+  }
+  formulario();
 }
 
-
-let birthYear = Number(prompt("Ingresar Año de nacimiento"));
-let actualYear = 2022;
-let result = actualYear - birthYear;
-
-while (birthYear > 2004 || birthYear < 1950) {
-  alert("Año no Valido");
-  birthYear = Number(prompt("Ingresar Año de nacimiento"));
+function mostrarListado(listas){
+  let listado = document.getElementById("listado");
+  listado.innerHTML = "";
+  
+  listas.forEach(listado => {
+      let li = document.createElement("li");
+      li.innerHTML=`
+      <h2>${listado.lounge} - ${listado.invited} - ${listado.name} - ${listado.lastname} - 
+      ${listado-day} - ${listado.year} - ${listado.year} - ${listado.month}</h2>
+      `
+      listado.append(li);
+  });
 }
+function formulario(){
+  const form = document.getElementById("presupuestosContenedor");
+  form.innerHTML = `
+<div id="containerform">
+      <h1>Dejanos Tus Datos y nos pondremos en contacto</h1>
+  <div class="row">
+      <div id="salon" class="selectedSalon col-sm-12 col-md-6 col-xl-6">
+          <input class="form-control" type="text" placeholder="Salón" aria-label="default input example">
+  </div>
+      <div id="invitados" class="selectedInvitados col-sm-12 col-md-6 col-xl-6">
+          <input class="form-control" type="text" placeholder="Cantidad aproximada de invitados" aria-label="default input example">
+      </div>
+  </div>
+  <br>
+  <div class="row">
+      <div id="name" class="selectedNombre col-sm-12 col-md-4 col-xl-4">
+          <input class="form-control" type="text" placeholder="Nombre" aria-label="default input example">
+      </div>
+      <div id="lastname" class="selectedApellido col-sm-12 col-md-4 col-xl-4">
+          <input class="form-control" type="text" placeholder="Apellido" aria-label="default input example">
+      </div>
+      <div id="cell" class="selectedTelefono col-sm-12 col-md-4 col-xl-4">
+          <input class="form-control" type="text" placeholder="Teléfono" aria-label="default input example">
+      </div>
+  </div>
+  <br>
+      <div class="d-grid gap-2 col-6 mx-auto">
+           <button class="boton-volver" type="submit">Agregar Fecha</button>
+      </div>
+  <br>     
+</div>`
+document.getElementById("presupuestosContenedor").addEventListener("submit", agregarFecha);
 
-// Creacion de array de Objetos para usuarios
-let usuarios = [
-  ({
-    dni: 37081504,
-    nombre: "Francisoco",
-    apellido: "caffa",
-  }),
-  ({
-    dni: 35714840,
-    nombre: "Raul",
-    apellido: "messi",
-  }),
-  ({
-    dni: 12255009,
-    nombre: "Laura",
-    apellido: "stark",
-  }),
-];
-//Le Agrego un filter para que si el Usuario Coincide lo vuelva a saludar
-buscarCliente(input);
+}
+function agregarFecha(e){
+  e.preventDefault();
+  const lounge = document.getElementById("salon");
+  const invited = document.getElementById("invitados");
+  const name = document.getElementById("name");
+  const lastname = document.getElementById("lastname");
+  const day = document.getElementById("userDia");
+  const year = document.getElementById("userAño");
+  const month = month.getElementById("userMes");
 
+  const listado = new Listado(lounge, invited, name, lastname, day, year, month);
+  const listadoFechas = JSON.parse(localStorage.getItem(fechaElejida));
+  if(listadoFechas == null){
+      localStorage.setItem(fechaElejida.selectedMonth, JSON.stringify([fechaElejida]));
+      mostrarListado([listado]);
+  } else{
+      listado.push(listado);
+      localStorage.setItem(fechaElejida, JSON.stringify(listado));
+      mostrarListado(presupuestos);
 
-
-
-// getUsuario();
- 
-
-
-// inicializo las variables a mostrar.
-let inputOP;
-let saldo = 0;
-
-
-// Si recorido me da true sigo con los menu de opcionnes
-if (recorido()) {
-  
-  // Muestro el menu
-  // Mientras la opcion ingresada no sea cero, muestro resultado
-  // y repito el menu.
-  do {
-    menuPrincipal();
-  } while (inputOP !== 0);
-
-  
-} else {
-  alert(`El usuario No exsite.
-            Desea crear un Usuario
-            1. SI
-            2. No
-            0. Salir`);
-  inputOP = Number(prompt("Ingresa una Opcion"));
-  switch (inputOP) {
-    case 0:
-      alert("Gracias por su Visita");
-      break;
-    case 1:
-      alert(`Genial vamos a crearle un Usuario `);
-      nuevoUsuario();
-      const usuario4 = new nuevoUsuario(
-        Number(prompt("Ingresa tu dni")),
-        prompt("Ingresa tu nombre"),
-        prompt("ingresa tu apellido"),
-    );
-        alert("usuario Creado")
-      usuarios.push(usuario4);
-      console.log(usuario4);
-      do {
-        menuPrincipal();
-      } while (inputOP !== 0);
-      break;
-    case 2:
-      alert(`No Podra ingresar a CCF`);
-      break;
-    default:
-      alert("Ingrese una opcion valida.");
-      break;
   }
 }
-// getUsuario();
 
+////////////////////////////////////////////////////////////////////////////////////////
+class Presupuesto {
+  constructor(titulo, imagen, descripcion) {
+      this.titulo = titulo;
+      this.imagen = imagen;
+      this.descripcion = descripcion;
+  }
+}
+const presupuestos = [
+  new Presupuesto("Presupuesto W4 1", "./img/Presupuesto1.jpg", "./img/EXCLUSIVO1-2023.jpg"),
+  new Presupuesto("Presupuesto W4 2", "./img/Presupuesto2.jpg", "./img/EXCLUSIVO2-2023.jpg"),
+  new Presupuesto("Presupuesto W4 Full", "./img/w4Full.jpg", "./img/EXCLUSIVOPACKFULL-2023.jpg"),
+]
 
+document.getElementById("presupuestosContenedor").addEventListener("submit", completarFormulario)
+
+class Listado{
+  constructor(lounge, invited, name, lastname, day, year, month){
+      this.lounge = lounge;
+      this.invited = invited;
+      this.name = name;
+      this.lastname = lastname;
+      this.day = day;
+      this.year = year;
+      this.month = month;
+  }
+}
+mPresupuestos(presupuestos);
