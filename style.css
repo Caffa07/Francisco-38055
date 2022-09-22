@@ -42,7 +42,9 @@ img{
 }
 .boton-contacto,
 .boton-volver,
-#boton-volver{
+#boton-volver,
+#form-datos,
+#listado{
         display: block;
     list-style: none;
     text-decoration: none;
@@ -62,7 +64,6 @@ img{
     padding-left: 150px;
     padding-top: 130px;
     padding-right: 150px;
-    padding-bottom: 130px;
     background-color: black;
   }
   ul{
