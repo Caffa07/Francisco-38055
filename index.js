@@ -1,3 +1,4 @@
+
 function mostrarPresupuestos(presupuesto){
   const contenedorPresupuestos = document.getElementById("presupuestosContenedor");
   contenedorPresupuestos.innerHTML="";
@@ -70,22 +71,18 @@ function mostrarContacto(presupuesto){
       <input class="boton-volver" type="submit" value="Buscar">
   </div>    
 </form>`; 
- 
-const botonVerPresupuesto = crearBotonVerPresupuesto(presupuesto);
-
 }
+
 function completarFormulario(e){
 e.preventDefault();
 fechaElejida = document.getElementById("userDia").value;
   const listado = document.getElementById("listado");
   const listadoFechas = JSON.parse(localStorage.getItem(fechaElejida));
-  if(listadoFechas == null){
-      listado.innerHTML = "<h1>No Tenemos Consultas Para Esa Fecha</h1>"
-  }else {
-      mostrarListado(listadoFechas);
-  }
+  listadoFechas == null ? listado.innerHTML = "<h1>No Tenemos Consultas Para Esa Fecha</h1>" : mostrarListado(listadoFechas);
+  
   formulario();
-}
+  }
+
 
 function mostrarListado(listadoFechas){
   let listado = document.getElementById("listado");
@@ -147,8 +144,9 @@ function agregarFecha(e){
   const num = document.getElementById("cell").value
 
   const listado = new Listado(lounge, invited, name, lastname, num);
-
+  validacion(listado);
   const localStorageFechas = JSON.parse(localStorage.getItem(fechaElejida));
+
   if(localStorageFechas == null){
       localStorage.setItem(fechaElejida, JSON.stringify([listado]));
       mostrarListado([listado]);
@@ -156,10 +154,14 @@ function agregarFecha(e){
     localStorageFechas.push(listado);
       localStorage.setItem(fechaElejida, JSON.stringify(localStorageFechas));
       mostrarListado(localStorageFechas);
-  }
+  } 
   e.target.reset();
 }
-
+function validacion(lista){
+if(lista.lounge == ""|| lista.invited == ""|| lista.name == ""|| lista.lastname == "" || lista.num == ""){
+alert("Completar todos los campos")
+}
+}
 
 
 
