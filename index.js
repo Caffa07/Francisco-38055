@@ -54,6 +54,10 @@ function botonContacto(){
   botonContacto.addEventListener("click", () => {
     mostrarContacto();
     botonAtras();
+    Toastify({
+      text: "No Olvides visitar nuestra Galeria",
+      className: "info",
+    }).showToast();
   })
   document.getElementById("presupuestosContenedor").prepend(botonContacto);
 }
@@ -149,17 +153,37 @@ function agregarFecha(e){
 
   if(localStorageFechas == null){
       localStorage.setItem(fechaElejida, JSON.stringify([listado]));
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Tu Fecha Se Guardo con Exito',
+        showConfirmButton: false,
+        timer: 1500
+      })
       mostrarListado([listado]);
   } else{
     localStorageFechas.push(listado);
       localStorage.setItem(fechaElejida, JSON.stringify(localStorageFechas));
-      mostrarListado(localStorageFechas);
+      
+     setTimeout(mostrarListado(localStorageFechas), 3000);
   } 
   e.target.reset();
 }
 function validacion(lista){
 if(lista.lounge == ""|| lista.invited == ""|| lista.name == ""|| lista.lastname == "" || lista.num == ""){
-alert("Completar todos los campos")
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Los Campos Estan Vacios!',
+  })
+}else{
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Tu Fecha Se Guardo con Exito',
+    showConfirmButton: false,
+    timer: 1500
+  })
 }
 }
 

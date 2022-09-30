@@ -74,3 +74,13 @@ img{
     padding-top: 130px;
     padding-right: 150px;
   }
+  .info{
+    display: block;
+    list-style: none;
+    text-decoration: none;
+    padding: 0 20px;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    background-color: linear-gradient(right, black, rgba(70, 68, 68, 0.514));
+    transition: all 1s;
+}
