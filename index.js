@@ -165,7 +165,7 @@ function agregarFecha(e){
     localStorageFechas.push(listado);
       localStorage.setItem(fechaElejida, JSON.stringify(localStorageFechas));
       
-    //  mostrarListado(localStorageFechas);
+    setTimeout(() =>  mostrarListado(localStorageFechas), 2300);
   } 
   e.target.reset();
 }
@@ -180,11 +180,11 @@ if(lista.lounge == ""|| lista.invited == ""|| lista.name == ""|| lista.lastname 
   Swal.fire({
     position: 'center',
     icon: 'success',
-    title: 'Tu Fecha Se Guardo con Exito',
+    title: 'Tu Fecha Se Guardo con Exito, Pronto nos podremos en contacto',
     showConfirmButton: false,
-    timer: 1500
+    timer: 2200
   })
-  mostrarListado([lista]);
+ setTimeout(() =>  mostrarListado([lista]), 2300);
 }
 }
 
