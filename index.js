@@ -109,7 +109,14 @@ function formulario(){
         <h1>Dejanos Tus Datos y nos pondremos en contacto</h1>
     <div class="row">
         <div class="selectedSalon col-sm-12 col-md-6 col-xl-6">
-            <input id="salon" class="form-control" type="text" placeholder="Salón" aria-label="default input example">
+        <select id="salon" class="form-select" aria-label="Default select example">
+                         <option value="">Salon</option>
+                         <option value="Gv Eventos">Gv Eventos</option>
+                         <option value="Atpadis">Atpadis</option>
+                         <option value="La Sibila">La Sibila</option>
+                         <option value="FlorDeLiz">Flor de Liz</option>
+                         <option value="Otros">Otros</option>
+                     </select>
     </div>
         <div  class="selectedInvitados col-sm-12 col-md-6 col-xl-6">
             <input id="invitados" class="form-control" type="text" placeholder="Cantidad aproximada de invitados" aria-label="default input example">
@@ -153,19 +160,12 @@ function agregarFecha(e){
 
   if(localStorageFechas == null){
       localStorage.setItem(fechaElejida, JSON.stringify([listado]));
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Tu Fecha Se Guardo con Exito',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      mostrarListado([listado]);
+      
   } else{
     localStorageFechas.push(listado);
       localStorage.setItem(fechaElejida, JSON.stringify(localStorageFechas));
       
-     setTimeout(mostrarListado(localStorageFechas), 3000);
+    //  mostrarListado(localStorageFechas);
   } 
   e.target.reset();
 }
@@ -184,6 +184,7 @@ if(lista.lounge == ""|| lista.invited == ""|| lista.name == ""|| lista.lastname 
     showConfirmButton: false,
     timer: 1500
   })
+  mostrarListado([lista]);
 }
 }
 
