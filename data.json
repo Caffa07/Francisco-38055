@@ -1,0 +1,17 @@
+[
+    {
+       "titulo": "Presupuesto W4 1",
+       "imagen": "./img/Presupuesto1.jpg",
+       "descripcion": "./img/EXCLUSIVO1-2023.jpg"
+    },
+    {
+        "titulo": "Presupuesto W4 2",
+        "imagen": "./img/Presupuesto2.jpg",
+        "descripcion": "./img/EXCLUSIVO2-2023.jpg"
+     },
+     {
+        "titulo": "Presupuesto W4 Full",
+        "imagen": "./img/w4Full.jpg",
+        "descripcion": "./img/EXCLUSIVOPACKFULL-2023.jpg"
+     }
+]

@@ -32,20 +32,28 @@ function crearBotonVerPresupuesto(presupuesto){
 function mPresupuestos(presupuestos) {
    const contenedorPresupuestos =  document.getElementById("presupuestosContenedor");
    contenedorPresupuestos.innerHTML = ""
+    fetch("./data.json")
+    .then(Response => Response.json())
+    .then(json => {
 
-   presupuestos.forEach(presupuesto => {
-        const divPresupuesto = document.createElement("div");
-        divPresupuesto.classList.add("presup");
-       divPresupuesto.innerHTML = `
-       <h1>${presupuesto.titulo}</h1>
-       <img src= "${presupuesto.imagen}">
-       <br>
-       `
-       const botonVerPresupuesto = crearBotonVerPresupuesto(presupuesto);
-       divPresupuesto.append(botonVerPresupuesto);
-       contenedorPresupuestos.append(divPresupuesto);
+      presupuestos = json;
 
+      presupuestos.forEach(presupuesto => {
+           const divPresupuesto = document.createElement("div");
+           divPresupuesto.classList.add("presup");
+          divPresupuesto.innerHTML = `
+          <h1>${presupuesto.titulo}</h1>
+          <img src= "${presupuesto.imagen}">
+          <br>
+          `
+          const botonVerPresupuesto = crearBotonVerPresupuesto(presupuesto);
+          divPresupuesto.append(botonVerPresupuesto);
+          contenedorPresupuestos.append(divPresupuesto);
+   
+       });
     });
+
+
 }
 function botonContacto(){
   const botonContacto = document.createElement ("button");
@@ -136,7 +144,7 @@ function formulario(){
     </div>
     <br>
         <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="boton-volver" type="submit">Buscar</button>
+        <button class="boton-volver" type="submit">Agregar</button>
         </div>
     <br>     
   </div>
@@ -187,9 +195,12 @@ if(lista.lounge == ""|| lista.invited == ""|| lista.name == ""|| lista.lastname 
  setTimeout(() =>  mostrarListado([lista]), 2300);
 }
 }
+//////////// Fetch con async-await Traido desde una url a modo de practica y prueba/////////
+const getData = async () => {
+  const response = await fetch("https://rickandmortyapi.com/api/character");
+  const data = await response.json();
 
-
-
+}
 ////////////////////////////////////////////////////////////////////////////////////////
 class Presupuesto {
   constructor(titulo, imagen, descripcion) {
@@ -198,11 +209,11 @@ class Presupuesto {
       this.descripcion = descripcion;
   }
 }
-const presupuestos = [
-  new Presupuesto("Presupuesto W4 1", "./img/Presupuesto1.jpg", "./img/EXCLUSIVO1-2023.jpg"),
-  new Presupuesto("Presupuesto W4 2", "./img/Presupuesto2.jpg", "./img/EXCLUSIVO2-2023.jpg"),
-  new Presupuesto("Presupuesto W4 Full", "./img/w4Full.jpg", "./img/EXCLUSIVOPACKFULL-2023.jpg"),
-]
+// const presupuestos = [
+//   new Presupuesto("Presupuesto W4 1", "./img/Presupuesto1.jpg", "./img/EXCLUSIVO1-2023.jpg"),
+//   new Presupuesto("Presupuesto W4 2", "./img/Presupuesto2.jpg", "./img/EXCLUSIVO2-2023.jpg"),
+//   new Presupuesto("Presupuesto W4 Full", "./img/w4Full.jpg", "./img/EXCLUSIVOPACKFULL-2023.jpg"),
+// ]
 
 document.getElementById("presupuestosContenedor").addEventListener("submit", completarFormulario)
 
@@ -219,4 +230,4 @@ class Listado{
   }
 }
 let fechaElejida;
-mPresupuestos(presupuestos);
+mPresupuestos();
