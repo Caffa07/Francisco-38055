@@ -9,7 +9,7 @@ function mostrarPresupuestos(presupuesto){
   <br>
   <p><img src= "${presupuesto.descripcion}"></p>`; 
 }
-function botonAtras(){
+function botonAtras(presupuestos){
    const botonAtras = document.createElement ("button");
    botonAtras.classList.add("boton-volver");
    botonAtras.innerText = "Atras";
@@ -197,10 +197,11 @@ if(lista.lounge == ""|| lista.invited == ""|| lista.name == ""|| lista.lastname 
 }
 //////////// Fetch con async-await Traido desde una url a modo de practica y prueba/////////
 const getData = async () => {
-  const response = await fetch("https://rickandmortyapi.com/api/character");
-  const data = await response.json();
-
+  await fetch("https://rickandmortyapi.com/api/character")
+  .then(response => response.json())
+  .then(data => console.log(data.results));
 }
+getData()
 ////////////////////////////////////////////////////////////////////////////////////////
 class Presupuesto {
   constructor(titulo, imagen, descripcion) {
